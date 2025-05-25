@@ -1,0 +1,155 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 20px;
+  background: linear-gradient(135deg, #e0f7fa, #ffffff);
+  color: #333;
+}
+
+h1.interactive-title {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 3rem;
+  background: linear-gradient(90deg, #ff6a00, #ee0979);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientAnimation 5s ease infinite;
+  cursor: pointer;
+}
+
+@keyframes gradientAnimation {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.filter-buttons {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.filter-buttons button {
+  background-color: #eee;
+  border: none;
+  padding: 10px 22px;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.3s, transform 0.2s;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.filter-buttons button:hover {
+  background-color: #d1e7ff;
+  transform: scale(1.05);
+}
+
+.filter-buttons button.active {
+  background-color: #3399ff;
+  color: white;
+  box-shadow: 0 4px 15px rgba(51,153,255,0.6);
+}
+
+.funny-quote {
+  text-align: center;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #222;
+  margin-bottom: 20px;
+  min-height: 40px; /* to avoid layout jump */
+  transition: opacity 0.5s ease;
+  user-select: none;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.gallery-item {
+  width: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s;
+  background: white;
+  padding-bottom: 40px; /* extra space for emoji below */
+}
+
+.gallery-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.1);
+}
+
+/* Remove captions, show emoji icon instead */
+.icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-size: 24px;
+  opacity: 0.8;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Emoji reaction below image */
+.emoji-reaction {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28px;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+  0%, 100% {
+    text-shadow:
+      0 0 2px #fff,
+      0 0 5px #f0f,
+      0 0 10px #f0f,
+      0 0 15px #ff00ff,
+      0 0 20px #ff00ff,
+      0 0 30px #ff00ff;
+    transform: scale(1);
+  }
+  50% {
+    text-shadow:
+      0 0 5px #fff,
+      0 0 10px #ff69b4,
+      0 0 15px #ff69b4,
+      0 0 20px #ff1493,
+      0 0 30px #ff1493,
+      0 0 40px #ff1493;
+    transform: scale(1.2);
+  }
+}
+
+.sparkle-animation {
+  animation: sparkle 1.5s ease forwards;
+}
+
+/* Responsive */
+@media(max-width: 600px) {
+  .gallery-item {
+    width: 45%;
+  }
+}
